@@ -2,24 +2,26 @@
   <div class="flights">
     <div class="flights-wrapper" v-if="flights.length > 0">
       <div class="list" v-for="flight in flights" :key="flight.id">
-        <div class="list-item">
-          <div class="price">{{ flight.id }}</div>
-          <div class="general-info">
-            {{ userDate }}
-            <br />
-            {{ flight.from }}-{{ flight.to }}
-          </div>
-        </div>
+        <flight-card
+          :cityOfArrival="flight.city_of_arrival.name"
+          :cityOfDeparture="flight.city_of_departure.name"
+          :dateOfDeparture="flight.departure_date"
+          :timeOfDeparture="flight.departure_time"
+          :timeOfArrival="flight.arrival_time"
+          :plane="flight.plane"
+        />
       </div>
     </div>
     <div class="no-flights-wrapper" v-else>Выберите параметры полета</div>
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+import FlightCard from './FlightCard/FlightCard.vue';
 export default {
   name: 'SearchResults',
-  props: ['flights', 'userDate'],
-  data() {},
+  components: { FlightCard },
+  computed: { ...mapState(['flights']) },
 };
 </script>
 <style>

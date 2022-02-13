@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <input class="user-input" type="text" v-model="cityFrom" />
-    <input class="user-input" type="text" v-model="cityTo" />
-    <input class="user-input" type="date" v-model="date" />
+    <input class="user-input" type="text" v-model="flightData.cityOfDeparture" />
+    <input class="user-input" type="text" v-model="flightData.cityOfArrival" />
+    <input class="user-input" type="date" v-model="flightData.date" />
     <input class="user-input" type="date" />
 
     <div class="user-input ticket-counter">
@@ -20,21 +20,17 @@ export default {
   name: 'SearchForm',
   data() {
     return {
-      cityFrom: '',
-      cityTo: '',
-      date: '',
+      flightData: {
+        cityOfDeparture: '',
+        cityOfArrival: '',
+        date: '',
+      },
       amount: '1',
     };
   },
   methods: {
     search() {
-      this.$emit(
-        'submit',
-        this.cityFrom,
-        this.cityTo,
-        this.date,
-        Number(this.amount)
-      );
+      this.$store.dispatch('getFlights', this.flightData);
     },
   },
 };
