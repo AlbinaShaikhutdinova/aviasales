@@ -16,6 +16,7 @@ body {
   min-height: 100vh;
 }
 * {
+  font-size: 10px;
   box-sizing: border-box;
 }
 #app {

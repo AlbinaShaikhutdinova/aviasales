@@ -11,13 +11,17 @@
       <button @click="amount++">+</button>
     </div>
 
-    <button class="button" @click="search">Найти</button>
+    <StandardButton title="Найти" @click="search" />
   </header>
 </template>
 
 <script>
+import StandardButton from '../../../common/UI/button.vue';
 export default {
   name: 'SearchForm',
+  components: {
+    StandardButton,
+  },
   data() {
     return {
       flightData: {
@@ -52,10 +56,10 @@ export default {
   width: 15rem;
   max-width: 20%;
 }
-.button {
+/* .button {
   height: 2rem;
   background-color: rgb(255, 173, 20);
   color: white;
   border: none;
-}
+} */
 </style>
