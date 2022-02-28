@@ -17,12 +17,14 @@
 </template>
 
 <script>
+import { router } from '../../../../Router/Router';
 export default {
   name: 'FlightCard',
   props: ['cityOfDeparture', 'dateOfDeparture', 'timeOfDeparture', 'cityOfArrival', 'timeOfArrival', 'plane'],
   methods: {
     getTickets() {
       this.$store.dispatch('getTickets', this.plane.id);
+      router.push({ path: '/booking' });
     },
   },
 };

@@ -1,11 +1,12 @@
 import { createStore } from 'vuex';
-import { fetchFlights, fetchTickets } from '../service/api';
+import { fetchFlights, fetchTickets, postBookingData } from '../service/api';
 
 export const store = createStore({
   state() {
     return {
       flights: [],
       tickets: [],
+      response: false,
     };
   },
   mutations: {
@@ -15,6 +16,9 @@ export const store = createStore({
     loadTickets(state, payload) {
       state.tickets = payload;
     },
+    loadBookingData(state, payload) {
+      state.response = payload;
+    },
   },
   actions: {
     async getFlights({ commit }, flightData) {
@@ -22,6 +26,9 @@ export const store = createStore({
     },
     async getTickets({ commit }, id) {
       commit('loadTickets', await fetchTickets(id));
+    },
+    async sendUserBooking({ commit }, data) {
+      commit('loadBookingData', await postBookingData(data));
     },
   },
 });
