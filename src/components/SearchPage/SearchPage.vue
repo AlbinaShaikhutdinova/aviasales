@@ -1,10 +1,10 @@
 <template>
   <div class="page">
     <search-form />
-    <main>
+    <div class="main">
       <Filter />
       <search-results />
-    </main>
+    </div>
   </div>
 </template>
 
@@ -27,10 +27,11 @@ export default {
 };
 </script>
 
-<style>
-main {
+<style lang="scss">
+.main {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  gap: 3rem;
+  padding: 2rem 5rem;
 }
 </style>

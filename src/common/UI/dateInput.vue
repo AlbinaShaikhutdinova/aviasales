@@ -1,9 +1,10 @@
 <template>
-  <input type="date" class="date-input" />
+  <input :placeholder="placeholder" type="date" class="date-input" />
 </template>
 <script>
 export default {
   name: 'DateInput',
+  props: ['placeholder'],
 };
 </script>
 
@@ -14,5 +15,8 @@ export default {
   color: black;
   padding: 1rem 2rem;
   border: none;
+  &:focus {
+    outline-color: $button-color;
+  }
 }
 </style>

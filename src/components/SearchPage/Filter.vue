@@ -1,12 +1,9 @@
 <template>
   <aside class="filters">
+    <h3>Пересадки</h3>
+    <hr />
     <div class="filter-item">
-      <input
-        type="checkbox"
-        id="filter-transfer"
-        v-model="isTransfer"
-        @change="applyFilter"
-      />
+      <input type="checkbox" id="filter-transfer" v-model="isTransfer" @change="applyFilter" />
       <label for="filter-transfer">Пересадка</label>
     </div>
   </aside>
@@ -33,11 +30,11 @@ export default {
   width: 15%;
   min-width: 15rem;
   padding: 1rem;
-  border: 1px solid black;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: white;
 }
 .filter-item {
   display: flex;

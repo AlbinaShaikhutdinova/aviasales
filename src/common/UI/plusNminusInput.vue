@@ -1,34 +1,15 @@
 <template>
   <div class="custom-plus-minus-input">
-    <button
-      class="round-button"
-      @click="
-        () => {
-          localValue > 0 ? localValue-- : localValue;
-          changeValue();
-        }
-      "
-    >
-      -
-    </button>
+    <span>{{ name }}</span>
+    <button class="round-button" @click="substractValue">-</button>
     <input readonly class="readonly-input" type="text" v-model="localValue" />
-    <button
-      class="round-button"
-      @click="
-        () => {
-          localValue++;
-          changeValue();
-        }
-      "
-    >
-      +
-    </button>
+    <button class="round-button" @click="addValue">+</button>
   </div>
 </template>
 <script>
 export default {
   name: 'PlusMinusInput',
-  props: ['value'],
+  props: ['value', 'name', 'min', 'max'],
   data() {
     return {
       localValue: this.value,
@@ -38,22 +19,16 @@ export default {
     changeValue() {
       this.$emit('valueChanged', this.localValue);
     },
+    addValue() {
+      this.localValue < this.max ? this.localValue++ : this.localValue;
+      this.changeValue();
+    },
+    substractValue() {
+      this.localValue > this.min ? this.localValue-- : this.localValue;
+      this.changeValue();
+    },
   },
 };
-// export default {
-//   name: 'PlusMinusInput',
-//
-//   data() {
-//     return {
-//       localValue: this.value,
-//     };
-//   },
-//   methods: {
-//     changeValue() {
-//       this.$emit('valueChanged', this.localValue);
-//     },
-//   },
-// };
 </script>
 
 <style lang="scss">
@@ -66,7 +41,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  span {
+    font-size: 1.5rem;
+    margin-right: 0.2rem;
+  }
   input {
     width: 2rem;
     border: none;

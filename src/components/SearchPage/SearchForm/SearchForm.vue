@@ -1,15 +1,13 @@
 <template>
   <header class="header">
     <div class="header-wrapper">
-      <TextInput v-model="flightData.cityOfDeparture" />
-      <TextInput v-model="flightData.cityOfArrival" />
-      <DateInput v-model="flightData.date" />
-      <DateInput />
-      <PlusMinusInput @valueChanged="changeAmount" :value="0" />
-      <!-- <select class="select">
-        <option :value="1"><PlusMinusInput :value="this.amount" /></option>
-      </select> -->
-
+      <TextInput :placeholder="'Откуда'" v-model="flightData.cityOfDeparture" />
+      <TextInput :placeholder="'Куда'" v-model="flightData.cityOfArrival" />
+      <DateInput :placeholder="'Когда'" v-model="flightData.date" />
+      <DateInput :placeholder="'Обратно'" />
+      <DropDownMenu :title="`${amount} пассажир`">
+        <component @valueChanged="changeAmount" :min="1" :max="10" :name="'Взрослый'" :value="1" :is="child_component"></component>
+      </DropDownMenu>
       <StandardButton class="search-button" title="Найти билеты" @click="search" />
     </div>
   </header>
@@ -20,6 +18,7 @@ import StandardButton from '../../../common/UI/button.vue';
 import TextInput from '../../../common/UI/textInput.vue';
 import DateInput from '../../../common/UI/dateInput.vue';
 import PlusMinusInput from '../../../common/UI/plusNminusInput.vue';
+import DropDownMenu from '../../../common/UI/dropdownMenu.vue';
 export default {
   name: 'SearchForm',
   components: {
@@ -27,6 +26,7 @@ export default {
     TextInput,
     DateInput,
     PlusMinusInput,
+    DropDownMenu,
   },
   data() {
     return {
@@ -36,6 +36,7 @@ export default {
         date: '',
       },
       amount: '1',
+      child_component: 'PlusMinusInput',
     };
   },
   methods: {
@@ -57,7 +58,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10rem;
 }
 .header-wrapper {
   padding: 5rem 2rem;

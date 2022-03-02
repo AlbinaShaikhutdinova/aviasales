@@ -1,10 +1,10 @@
 <template>
-  <input type="text" class="text-input" />
+  <input :placeholder="placeholder" type="text" class="text-input" />
 </template>
 <script>
 export default {
   name: 'TextInput',
-  props: [],
+  props: ['placeholder'],
 };
 </script>
 
@@ -15,5 +15,8 @@ export default {
   color: black;
   padding: 1rem 2rem;
   border: none;
+  &:focus {
+    outline-color: $button-color;
+  }
 }
 </style>
