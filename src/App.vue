@@ -1,4 +1,5 @@
 <template>
+  <header class="header"></header>
   <router-view> </router-view>
 </template>
 
@@ -27,15 +28,19 @@ button {
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 .price-font {
-  font-size: 2.8rem;
+  font-size: 2.3rem;
   font-weight: 700;
 }
 .time-font {
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 .muted-font {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
   color: $muted-font-color;
+}
+h4 {
+  font-size: 1.4rem;
 }
 #app {
   width: 100%;

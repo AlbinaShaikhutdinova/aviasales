@@ -8,7 +8,7 @@
       <DropDownMenu :title="`${amount} пассажир`">
         <component @valueChanged="changeAmount" :min="1" :max="10" :name="'Взрослый'" :value="1" :is="child_component"></component>
       </DropDownMenu>
-      <StandardButton class="search-button" title="Найти билеты" @click="search" />
+      <StandardButton class="search-button" :className="'standard-button'" :title="'Найти билеты'" @click="search" />
     </div>
   </header>
 </template>

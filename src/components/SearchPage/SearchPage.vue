@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <search-form />
-    <div class="main">
+    <div class="main search-page">
       <Filter />
       <search-results />
     </div>
@@ -29,9 +29,11 @@ export default {
 
 <style lang="scss">
 .main {
+  padding: 2rem 5rem;
+}
+.search-page {
   display: flex;
   align-items: flex-start;
   gap: 3rem;
-  padding: 2rem 5rem;
 }
 </style>

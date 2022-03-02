@@ -1,10 +1,15 @@
 <template>
   <aside class="filters">
-    <h3>Пересадки</h3>
-    <hr />
-    <div class="filter-item">
-      <input type="checkbox" id="filter-transfer" v-model="isTransfer" @change="applyFilter" />
-      <label for="filter-transfer">Пересадка</label>
+    <div class="filter-wrapper">
+      <h4>Пересадки</h4>
+      <div class="filter-item">
+        <input type="checkbox" id="filter-transfer" v-model="isTransfer" @change="applyFilter" />
+        <label for="filter-transfer">Без пересадок</label>
+      </div>
+      <div class="filter-item">
+        <input type="checkbox" id="filter-transfer" v-model="isTransfer" @change="applyFilter" />
+        <label for="filter-transfer">1 пересадка</label>
+      </div>
     </div>
   </aside>
 </template>
@@ -25,19 +30,36 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .filters {
   width: 15%;
-  min-width: 15rem;
-  padding: 1rem;
+  min-width: 20rem;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background-color: white;
-}
-.filter-item {
-  display: flex;
-  align-items: center;
+  .filter-wrapper {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: $muted-font-color;
+    h4 {
+      width: 100%;
+      position: relative;
+    }
+    h4::after {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      display: block;
+      width: 100%;
+      height: 0.2rem;
+      background-color: $bg-color;
+    }
+  }
+  .filter-item {
+    display: flex;
+    align-items: center;
+  }
 }
 </style>

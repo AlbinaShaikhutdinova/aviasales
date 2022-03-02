@@ -10,6 +10,7 @@ export default {
 
 <style lang="scss">
 .text-input {
+  cursor: auto;
   height: 100%;
   font-size: 1.5rem;
   color: black;

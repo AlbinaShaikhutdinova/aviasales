@@ -52,6 +52,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   ul {
     list-style: none;
     padding: 1rem 2rem;

@@ -2,7 +2,7 @@
   <div class="flight-card" @click="getTickets">
     <div class="flight-card__data minimum">
       <div class="price-font">3500 P</div>
-      <StandardButton :title="'Выбрать билет'" />
+      <StandardButton :className="'standard-button'" :title="'Выбрать билет'" />
     </div>
     <div class="flight-card__data">
       <h3>{{ plane.name }}</h3>
