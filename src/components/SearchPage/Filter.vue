@@ -60,6 +60,9 @@ export default {
   .filter-item {
     display: flex;
     align-items: center;
+    label {
+      font-size: 1.2rem;
+    }
   }
 }
 </style>

@@ -1,26 +1,29 @@
 <template>
-  <header class="header"></header>
+  <Header />
   <router-view> </router-view>
+  <Footer />
 </template>
 
 <script>
+import Header from './components/Header/Header.vue';
+import Footer from './components/Footer/Footer.vue';
 export default {
   name: 'App',
-  components: {},
+  components: { Header, Footer },
 };
 </script>
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-}
 * {
   font-size: 10px;
   box-sizing: border-box;
 }
+body {
+  margin: 0;
+  padding: 0;
+}
+
 button {
   cursor: pointer;
 }
@@ -43,8 +46,11 @@ h4 {
   font-size: 1.4rem;
 }
 #app {
+  position: relative;
   width: 100%;
+  height: 100%;
   min-height: 100vh;
+  padding-bottom: 10rem;
   background: $bg-color;
   font-family: 'Roboto', sans-serif;
 }

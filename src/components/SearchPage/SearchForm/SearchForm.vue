@@ -1,6 +1,6 @@
 <template>
-  <header class="header">
-    <div class="header-wrapper">
+  <div class="search-header">
+    <div class="search-header__wrapper">
       <TextInput :placeholder="'Откуда'" v-model="flightData.cityOfDeparture" />
       <TextInput :placeholder="'Куда'" v-model="flightData.cityOfArrival" />
       <DateInput :placeholder="'Когда'" v-model="flightData.date" />
@@ -10,7 +10,7 @@
       </DropDownMenu>
       <StandardButton class="search-button" :className="'standard-button'" :title="'Найти билеты'" @click="search" />
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -50,8 +50,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.header {
+<style scoped lang="scss">
+.search-header {
   width: 100%;
   height: fit-content;
   background-color: $primary-color;
@@ -59,15 +59,17 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.header-wrapper {
-  padding: 5rem 2rem;
+.search-header__wrapper {
+  max-width: $max-page-width;
+  padding: 2rem 5rem;
   display: flex;
   flex-flow: row wrap;
   gap: 0.3rem;
+  & > * {
+    height: 6rem;
+  }
 }
-.header-wrapper > * {
-  height: 6rem;
-}
+
 .select {
   font-size: 1.5rem;
   color: black;

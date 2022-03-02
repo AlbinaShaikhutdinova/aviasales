@@ -24,8 +24,4 @@ export default {
   computed: { ...mapState(['flights']) },
 };
 </script>
-<style>
-.flights {
-  width: 70%;
-}
-</style>
+<style></style>
