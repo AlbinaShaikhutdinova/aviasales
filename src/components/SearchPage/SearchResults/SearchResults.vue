@@ -24,4 +24,20 @@ export default {
   computed: { ...mapState(['flights']) },
 };
 </script>
-<style></style>
+<style lang="scss">
+.flights {
+  width: 100%;
+}
+.flights-wrapper {
+  width: 100%;
+  .list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .flights {
+    min-width: 20rem;
+  }
+}
+</style>

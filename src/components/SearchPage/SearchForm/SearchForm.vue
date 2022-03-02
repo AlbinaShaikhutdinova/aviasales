@@ -1,11 +1,11 @@
 <template>
   <div class="search-header">
     <div class="search-header__wrapper">
-      <TextInput :placeholder="'Откуда'" v-model="flightData.cityOfDeparture" />
-      <TextInput :placeholder="'Куда'" v-model="flightData.cityOfArrival" />
-      <DateInput :placeholder="'Когда'" v-model="flightData.date" />
-      <DateInput :placeholder="'Обратно'" />
-      <DropDownMenu :title="`${amount} пассажир`">
+      <TextInput class="input1" :placeholder="'Откуда'" v-model="flightData.cityOfDeparture" />
+      <TextInput class="input2" :placeholder="'Куда'" v-model="flightData.cityOfArrival" />
+      <DateInput class="input3" :placeholder="'Когда'" v-model="flightData.date" />
+      <DateInput class="input4" :placeholder="'Обратно'" />
+      <DropDownMenu class="input5" :title="`${amount} пассажир`">
         <component @valueChanged="changeAmount" :min="1" :max="10" :name="'Взрослый'" :value="1" :is="child_component"></component>
       </DropDownMenu>
       <StandardButton class="search-button" :className="'standard-button'" :title="'Найти билеты'" @click="search" />
@@ -81,5 +81,51 @@ export default {
   height: 2rem;
   width: 15rem;
   max-width: 20%;
+}
+@media (max-width: 768px) {
+  .input2 {
+    grid-area: to;
+  }
+  .input3 {
+    grid-area: dateTo;
+  }
+  .input4 {
+    grid-area: dateFrom;
+  }
+  .input5 {
+    grid-area: amount;
+  }
+  .input1 {
+    grid-area: from;
+  }
+  .search-button {
+    width: 100%;
+    grid-area: btn;
+  }
+  .search-header__wrapper {
+    padding: 1rem;
+    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      'from from to to'
+      'dateTo dateFrom amount amount'
+      'btn btn btn btn';
+    & > * {
+      width: 100%;
+      height: 4rem;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .search-header__wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'from from'
+      'to to'
+      'dateTo dateFrom'
+      'amount amount'
+      'btn btn';
+  }
 }
 </style>

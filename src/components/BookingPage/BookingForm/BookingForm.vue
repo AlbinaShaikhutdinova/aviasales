@@ -59,4 +59,10 @@ export default {
     padding: 0.7rem 1rem;
   }
 }
+@media (max-width: 768px) {
+  .form {
+    justify-content: center;
+    gap: 2rem;
+  }
+}
 </style>

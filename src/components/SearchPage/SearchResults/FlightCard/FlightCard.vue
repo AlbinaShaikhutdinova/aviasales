@@ -1,5 +1,16 @@
 <template>
   <div class="flight-card" @click="getTickets">
+    <div class="flight-card_mobile-view">
+      <div class="mobile-view__top">
+        <div class="price-font">3500 P</div>
+        <h4>{{ plane.name }}</h4>
+      </div>
+      <div class="mobile-view__bottom">
+        <FlightValue :name="'Время'" :value="`${timeOfDeparture} - ${timeOfArrival}`" />
+        <FlightValue :name="'Время в пути'" :value="`${timeOfDeparture - timeOfArrival}`" />
+        <FlightValue :name="'Пересадки'" :value="`Прямой`" />
+      </div>
+    </div>
     <div class="flight-card__data minimum">
       <div class="price-font">3500 P</div>
       <StandardButton :className="'standard-button'" :title="'Выбрать билет'" />
@@ -27,11 +38,13 @@
 import { router } from '../../../../Router/Router';
 import StandardButton from '../../../../common/UI/button.vue';
 import PlaneLine from '../../../../common/UX/planeLine.vue';
+import FlightValue from './FlightValue.vue';
 export default {
   name: 'FlightCard',
   components: {
     StandardButton,
     PlaneLine,
+    FlightValue,
   },
   props: ['cityOfDeparture', 'dateOfDeparture', 'timeOfDeparture', 'cityOfArrival', 'timeOfArrival', 'plane'],
   methods: {
@@ -52,6 +65,10 @@ export default {
   gap: 4rem;
   height: 20rem;
   width: 70rem;
+  margin: 0 auto;
+}
+.flight-card_mobile-view {
+  display: none;
 }
 .flight-card__data {
   width: 100%;
@@ -94,6 +111,39 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .flight-card {
+    height: 15rem;
+    width: 100%;
+    &__data,
+    &__data.minimum {
+      display: none;
+    }
+    &_mobile-view {
+      flex-direction: column;
+      gap: 1rem;
+      height: 100%;
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+    }
+    .mobile-view {
+      &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        h4 {
+          margin: 0;
+        }
+      }
+      &__bottom {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+      }
     }
   }
 }

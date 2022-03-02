@@ -72,4 +72,14 @@ export default {
   width: 60%;
   min-width: 70rem;
 }
+@media (max-width: 768px) {
+  .booking-form {
+    padding: 2rem;
+    width: 100%;
+    min-width: 20rem;
+  }
+  .booking-flight .container {
+    min-width: 20rem;
+  }
+}
 </style>
