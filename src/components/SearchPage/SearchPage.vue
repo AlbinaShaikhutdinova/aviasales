@@ -1,10 +1,13 @@
 <template>
   <div class="page">
-    <search-form @submit="submitHandle" />
-    <main>
-      <Filter />
-      <search-results :flights="result" :userDate="userDate" />
-    </main>
+    <search-form />
+    <div class="main">
+      <div class="search-page">
+        <Filter class="search-page__filter" />
+        <search-results />
+      </div>
+      <ModalButton />
+    </div>
   </div>
 </template>
 
@@ -12,85 +15,56 @@
 import SearchForm from './SearchForm/SearchForm.vue';
 import Filter from './Filter.vue';
 import SearchResults from './SearchResults/SearchResults.vue';
+import ModalButton from '../../common/UX/modalButton.vue';
 export default {
   name: 'SearchPage',
   components: {
     SearchForm,
     Filter,
     SearchResults,
+    ModalButton,
   },
   data() {
-    return {
-      flights: [
-        {
-          id: 1,
-          from: 'Moscow',
-          to: 'Ufa',
-          date: '02.20.2022',
-          endDate: '05.25.2022',
-          ticketsAvailable: 3,
-        },
-        {
-          id: 2,
-          from: 'St Petersburg',
-          to: 'Ufa',
-          date: '02.10.2022',
-          endDate: '05.25.2022',
-          ticketsAvailable: 1,
-        },
-        {
-          id: 3,
-          from: 'Moscow',
-          to: 'St Petersburg',
-          date: '03.08.2022',
-          endDate: '05.25.2022',
-          ticketsAvailable: 30,
-        },
-        {
-          id: 4,
-          from: 'Moscow',
-          to: 'St Petersburg',
-          date: '01.08.2022',
-          endDate: '04.25.2022',
-          ticketsAvailable: 10,
-        },
-        {
-          id: 5,
-          from: 'Samara',
-          to: 'St Petersburg',
-          date: '03.28.2022',
-          endDate: '05.25.2022',
-          ticketsAvailable: 5,
-        },
-      ],
-      result: [],
-      userQuery: {},
-      userDate: '',
-    };
+    return {};
   },
-  methods: {
-    submitHandle(cityFrom, cityTo, date, people) {
-      this.userDate = date;
-      this.result = this.flights.filter((flight) => {
-        return (
-          flight.from === cityFrom &&
-          flight.to === cityTo &&
-          Date.parse(date) > Date.parse(flight.date) &&
-          Date.parse(date) < Date.parse(flight.endDate) &&
-          flight.ticketsAvailable > people
-        );
-      });
-      console.log(this.userDate);
-    },
-  },
+  methods: {},
   computed: {},
 };
 </script>
 
-<style>
-main {
+<style lang="scss">
+.main {
+  padding: 2rem 5rem;
+  max-width: $max-page-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.search-page {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  gap: 3rem;
+}
+.modal-icon {
+  display: none;
+}
+@media (max-width: 1024px) {
+  .search-page {
+    width: 100%;
+    justify-content: center;
+  }
+  .search-page__filter {
+    display: none;
+  }
+  .modal-icon {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    bottom: 11rem;
+    left: calc(50vw - 5rem);
+    outline-color: white;
+    border-radius: 1rem;
+  }
 }
 </style>

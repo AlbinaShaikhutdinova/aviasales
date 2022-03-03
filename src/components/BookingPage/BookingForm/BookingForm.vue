@@ -1,22 +1,24 @@
 <template>
   <div class="form-wrapper">
     <div class="form">
-      <label>Имя<input type="text" v-model="userData.name" /></label>
-      <label>Фамилия<input type="text" v-model="userData.last_name" /></label>
-      <label>Отчество<input type="text" v-model="userData.patronymic" /></label>
-      <label>Номер паспорта<input type="text" v-model="userData.passport_id" /></label>
+      <label>Имя<input type="text" placeholder="Иван" v-model="userData.name" /></label>
+      <label>Фамилия<input placeholder="Иванов" type="text" v-model="userData.last_name" /></label>
+      <label>Отчество<input placeholder="Иванович" type="text" v-model="userData.patronymic" /></label>
+      <label>Номер паспорта<input placeholder="0123456789" type="text" v-model="userData.passport_id" /></label>
       <label>Пол<input type="text" v-model="userData.gender" /></label>
       <label>Гражданство<input type="text" v-model="userData.citizenship" /></label>
     </div>
   </div>
-  <button @click="addPassenger" class="button">Подтвердить</button>
+  <StandardButton :className="'secondary-button'" :title="'Подтвердить'" @click="addPassenger" />
 </template>
 
 <script>
+import StandardButton from '../../../common/UI/button.vue';
 export default {
   name: 'BookingForm',
   props: ['ticketId'],
   emits: ['addNewPassenger'],
+  components: { StandardButton },
   data() {
     return {
       userData: {
@@ -36,15 +38,31 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .form-wrapper {
-  padding: 1rem 2rem;
+  padding-bottom: 1rem;
 }
 .form {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-flow: row wrap;
+  justify-content: flex-start;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 2rem;
+  label {
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
+    padding: 0.7rem 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .form {
+    justify-content: center;
+    gap: 2rem;
+  }
 }
 </style>

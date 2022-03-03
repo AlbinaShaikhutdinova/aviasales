@@ -4,7 +4,16 @@ import { fetchFlights, fetchTickets, postBookingData } from '../service/api';
 export const store = createStore({
   state() {
     return {
-      flights: [],
+      flights: [
+        {
+          city_of_departure: { name: 'Уфа' },
+          departure_time: '12:00',
+          departure_date: '02.03.2022',
+          city_of_arrival: { name: 'Самара' },
+          plane: { name: 'Airbus 3000' },
+          arrival_time: '15:00',
+        },
+      ],
       tickets: [],
       response: false,
     };
